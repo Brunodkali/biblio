@@ -1,34 +1,29 @@
+const dbUsuarios = require('../models/classUsers.js');
+const dbLivros = require('../models/classLivros.js');
 const md5 = require('md5');
 
 module.exports.login = async (req, res) => {
     try{
-        let login = req.body.login;
+        let login = req.body.email;
         let senha = req.body.senha;
         let senhaHash = md5(senha);
-        let listaUsuarios = await Usuarios.find();
-        let listaGrupos = await Grupos.find();
-
+        let listaUsuarios = await dbUsuarios.selectUsers();
+        let listaLivros = await dbLivros.selectLivros();
         try {
             for(let i = 0; i < listaUsuarios.length; i++) {
+                let nomeUsuario = listaUsuarios[i].nome;
                 let emailUsuario = listaUsuarios[i].email;
                 let senhaUsuario = listaUsuarios[i].senha;
-                let nomeUsuario = listaUsuarios[i].name;
-                let imgAvatar = listaUsuarios[i].avatar;
 
-                if(login == emailUsuario && senhaHash == senhaUsuario){
+                if(login == emailUsuario && senha == senhaUsuario){
                     let usuario = nomeUsuario[0].toUpperCase() + nomeUsuario.substr(1);
-                    let jsonDados = { 
-                        usuario: usuario, 
-                        email: emailUsuario,
-                        avatarImg: imgAvatar,
-                        auth: 'databaseAuth', 
-                        listaUsuarios: listaUsuarios,
-                        listaGrupos: listaGrupos
-                    }
-
-                    req.session.user = jsonDados;
-
-                    res.render('menu', jsonDados);
+                    // let jsonDados = { 
+                    //     usuario: usuario, 
+                    //     email: emailUsuario,
+                    //     auth: 'databaseAuth'
+                    // }
+                    // req.session.user = jsonDados;
+                    res.send(`Usuário conectado: ${usuario}, livros disponíveis: ${listaLivros[0]['titulo']}`);
                 }
             }
             if (login != null || senha != null) {
@@ -97,25 +92,6 @@ module.exports.trocarSenha = async (req, res) => {
         }
     }catch(err) {
         return err
-    }
-};
-
-module.exports.selecionarImagem = async (req, res) => {
-    try {
-        let jsonDados = req.session.user;
-        let avatar = req.body.valueAvatar;
-        let emailTroca = req.body.emailTroca;
-        let filter = { email: emailTroca };
-        let options = { upsert: false };
-        let avatarImg = { 
-           $set: {
-                avatar: avatar
-            }
-        }
-        let update = await Usuarios.updateOne(filter, avatarImg, options);
-        return res.status(200).render('menu', jsonDados);
-    }catch(err) {
-        return err;
     }
 };
 

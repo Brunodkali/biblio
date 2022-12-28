@@ -1,0 +1,249 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --menu-size: 250px;
+    --cinza: rgb(40, 42, 54);
+}
+
+input {
+    caret-color: #b2b2b2;
+}
+
+::selection {
+    color: #fff;
+    background-color: rgb(70, 70, 119);
+}
+
+/* Index */
+
+a {
+    text-decoration: none;
+}
+   
+
+a.links {
+    display: none;
+}
+
+.centralizar {
+    display: flex;
+    justify-content: center;
+    font-family: Poppins;
+}
+
+.conteudo {
+    display: flex;
+    justify-content: center;
+    width: 700px;
+    min-height: 560px;
+    position: absolute;    
+    top: 15%;
+    font-family: Poppins;
+}
+
+#login {
+    position: absolute;
+    top: 0px;
+    width: 50%;   
+    padding: 20px 8% 55px 8%;
+    margin: 0 0 35px 0;
+    background: #f7f7f7;
+    border: 1px solid linear-gradient(60deg, rgba(84,58,183,1) 0%, rgba(0,172,193,1) 100%);
+    box-shadow: 0px 1px 4px 0px rgba(57, 104, 204, 0.6) inset;
+    border-radius: 15px;
+    animation-duration: 0.5s;
+    animation-timing-function: ease;
+    animation-fill-mode: both;
+  }
+
+#login h2 {
+    font-size: 30px;
+    color: rgb(55, 66, 131) ;
+    padding: 2px 0 10px 0;
+    font-family: Poppins;
+    font-weight: 400;   
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.googleAuth {
+    display: flex;
+    justify-content: center;
+}
+
+p {
+    margin-bottom:15px;
+}
+   
+.content p:first-child {
+    margin: 0px;
+}
+   
+label {
+    color: #405c60;
+    position: relative;
+}
+
+
+input {
+    outline: none;
+}
+   
+
+input:not([type="checkbox"]) {
+    width: 95%;
+    margin-top: 4px;
+    padding: 10px;    
+    border: 1px solid #b2b2b2;
+    border-radius: 3px;
+    box-shadow: 0px 1px 4px 0px rgba(168, 168, 168, 0.6) inset;
+    transition: all 0.2s linear;
+    font-family: Poppins;
+    font-size: 16px;
+}
+   
+input[type="submit"] {
+    width: 100%!important;
+    cursor: pointer;  
+    background: #2e4790;
+    padding: 8px 5px;
+    color: #fff;
+    font-size: 20px;  
+    border: 1px solid #fff;   
+    margin-top: 10px;  
+    text-shadow: 0 1px 1px #333;
+    border-radius: 5px;
+    transition: all 0.2s ease-in-out;
+}
+   
+input[type="submit"]:hover {
+    background:  rgb(55, 66, 131);
+    border-radius: 15px;
+    transition: all 0.2s ease-in-out;
+}
+
+.link {
+    position: absolute;
+    background: #e1eaeb;
+    color: #7f7c7c;
+    left: 0px;
+    height: 20px;
+    width: 440px;
+    padding: 17px 30px 20px 30px;
+    font-size: 16px;
+    text-align: right;
+    border-top: 1px solid #dbe5e8;
+    border-radius: 0 0  5px 5px;
+}
+   
+.link a {
+    font-weight: bold;
+    background: #f7f8f1;
+    padding: 6px;
+    color:  rgb(40, 42, 54);
+    margin-left: 10px;
+    border: 1px solid #cbd518;
+    border-radius: 4px;  
+    transition: all 0.4s  linear;
+}
+   
+.link a:hover {
+    color: #39bfd7;
+    background: #f7f7f7;
+    border: 1px solid rgb(40, 42, 54);
+}
+
+.header {
+    text-align:center;
+    background: linear-gradient(60deg, rgb(63, 44, 138) 0%, rgb(1, 140, 158) 100%);
+    color:white;
+}
+.logo {
+    width:50px;
+    fill:white;
+    padding-right:15px;
+    display:inline-block;
+    vertical-align: middle;
+}
+  
+.inner-header {
+    height:65vh;
+    width:100%;
+    margin: 0;
+    padding: 0;
+}
+  
+.flex { /*Flexbox for containers*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+  
+.waves {
+    position:relative;
+    width: 100%;
+    height:15vh;
+    margin-bottom:-7px; /*Fix for safari gap*/
+    min-height:100px;
+    max-height:150px;
+}
+  
+.content {
+    position:relative;
+    height:20vh;
+    text-align:center;
+    background-color: white;
+}
+  
+/* Animation */
+  
+.parallax > use {
+    animation: move-forever 25s cubic-bezier(.55,.5,.45,.5)     infinite;
+}
+
+.parallax > use:nth-child(1) {
+    animation-delay: -2s;
+    animation-duration: 7s;
+}
+
+.parallax > use:nth-child(2) {
+    animation-delay: -3s;
+    animation-duration: 10s;
+}
+
+.parallax > use:nth-child(3) {
+    animation-delay: -4s;
+    animation-duration: 13s;
+}
+
+.parallax > use:nth-child(4) {
+    animation-delay: -5s;
+    animation-duration: 20s;
+}
+
+@keyframes move-forever {
+    0% {
+     transform: translate3d(-90px,0,0);
+    }
+    100% { 
+      transform: translate3d(85px,0,0);
+    }
+}
+/*Shrinking for mobile*/
+@media (max-width: 768px) {
+    .waves {
+      height:40px;
+      min-height:40px;
+    }
+    .content {
+      height:30vh;
+    }
+    h1 {
+      font-size:24px;
+    }
+}
