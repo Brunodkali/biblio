@@ -1,5 +1,5 @@
-const dbUsuarios = require('../models/classUsers.js');
-const dbLivros = require('../models/classLivros.js');
+const dbUsuarios = require('../models/userModel.js');
+const dbLivros = require('../models/livroModel.js');
 const md5 = require('md5');
 
 module.exports.login = async (req, res) => {
@@ -7,8 +7,9 @@ module.exports.login = async (req, res) => {
         let login = req.body.email;
         let senha = req.body.senha;
         let senhaHash = md5(senha);
-        let listaUsuarios = await dbUsuarios.selectUsers();
-        let listaLivros = await dbLivros.selectLivros();
+        let listaUsuarios = await dbUsuarios.find();
+        let listaLivros = await dbLivros.find();
+
         try {
             for(let i = 0; i < listaUsuarios.length; i++) {
                 let nomeUsuario = listaUsuarios[i].nome;
@@ -23,9 +24,9 @@ module.exports.login = async (req, res) => {
                     //     auth: 'databaseAuth'
                     // }
                     // req.session.user = jsonDados;
-                    res.send(`Usuário conectado: ${usuario}, livros disponíveis: ${listaLivros[0]['titulo']}`);
+                    res.render('menu', { usuario: usuario });
                 }
-            }
+            } 
             if (login != null || senha != null) {
                 return res.status(401).redirect('/');
             }

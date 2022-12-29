@@ -1,16 +1,13 @@
-const { Pool } = require('pg');
+const mongoose = require('mongoose');
 
-async function connect() {    
-    if (global.connection) {
-        return global.connection.connect();
-    }
-    const pool = new Pool({
-        connectionString: 'postgres://jgulxddd:frOBYhhQ0UTs9MnCIvJSH0B_aU3oz77g@babar.db.elephantsql.com:5432/jgulxddd'
+mongoose.set('strictQuery', true);
+mongoose.connect('mongodb://127.0.0.1/biblio')
+    .then(() => {
+        console.log('Banco de dados conectado');
+    })
+    .catch(err => {
+        console.log(err);
     });
-    console.log("Criou pool de conexões no PostgreSQL!");
-    global.connection = pool;
+db = mongoose.connection;
 
-    return pool.connect();
-}
-
-module.exports = { connect };
+module.exports = db;

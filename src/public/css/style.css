@@ -247,3 +247,35 @@ input[type="submit"]:hover {
       font-size:24px;
     }
 }
+
+/* Menu */
+
+.navbar {
+    background-color: #333!important;
+}
+
+.d-flex {
+    width: calc(50%)!important;
+}
+
+.d-flex input {
+    width: calc(100%)!important;
+}
+
+.usuario {
+    font-family: Poppins;
+    font-size: 16px;
+    margin: 10px;
+    color: #ece2e2;
+    letter-spacing: 0.5px;
+}
+
+.usuario i {
+    margin-left: 30px;
+    margin-right: 10px;
+}
+
+.usuario i:hover {
+    cursor: pointer;
+    color: #dbe5e8;
+}

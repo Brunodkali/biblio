@@ -2,8 +2,7 @@ const express = require('express');
 const cookies = require("cookie-parser");
 const bodyParser = require("body-parser");
 const routerGoogle = express.Router();
-const dbUsuarios = require('../models/classUsers.js');
-const dbLivros = require('../models/classLivros.js');
+const dbLivros = require('../models/livroModel.js');
 
 routerGoogle.use(cookies());
 routerGoogle.use(bodyParser.urlencoded({ extended: true }));
@@ -28,8 +27,7 @@ routerGoogle.post('/loginGoogle', (req, res) => {
             const payload = ticket.getPayload();
             const nomeUser = payload["name"];
             const emailUser = payload["email"];
-            const listaUsuarios = await dbUsuarios.selectUsers();
-            const listaLivros = await dbLivros.selectLivros();
+            const listaLivros = await dbLivros.find();
             // let jsonDados = { 
             //     usuario: nomeUser, 
             //     email: emailUser,
@@ -39,21 +37,7 @@ routerGoogle.post('/loginGoogle', (req, res) => {
             //     listaGrupos: listaGrupos
             // }
             // req.session.user = jsonDados;
-
-            for (let i = 0; i < listaUsuarios.length; i++) {
-                const userGoogle = listaUsuarios[i]['email'];
-
-                if (userGoogle == emailUser) {
-                    console.log(userGoogle, emailUser);
-                    res.send(`Usuário conectado: ${nomeUser}, livros disponíveis: ${listaLivros[0]['titulo']}`);
-                }else {
-                    const userAdd = await dbUsuarios.insertUsers({
-                        nome: nomeUser,
-                        email: emailUser,
-                    });
-                    res.send(`Usuário conectado: ${nomeUser}, livros disponíveis: ${listaLivros[0]['titulo']}`);
-                }
-            }
+            res.render('menu', { usuario: nomeUser});
         }catch(err) {
             return err;
         }
