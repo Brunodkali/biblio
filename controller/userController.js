@@ -1,6 +1,7 @@
 const dbUsuarios = require('../models/userModel.js');
 const dbLivros = require('../models/livroModel.js');
 const md5 = require('md5');
+const fs = require('fs').promises;
 
 module.exports.login = async (req, res) => {
     try{
