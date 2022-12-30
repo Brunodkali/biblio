@@ -6,15 +6,18 @@ const livroSchema = new mongoose.Schema({
         type: String,
         require: true
     },
+    autor: {
+        type: String,
+        require: true
+    },
     numeroPaginas: {
         type: Number,
     },
     editora: {
         type: String
     },
-    autor: {
+    capa: {
         type: String,
-        require: true
     }
 });
 

@@ -18,18 +18,18 @@ module.exports.login = async (req, res) => {
 
                 if(login == emailUsuario && senha == senhaUsuario){
                     let usuario = nomeUsuario[0].toUpperCase() + nomeUsuario.substr(1);
-                    // let jsonDados = { 
-                    //     usuario: usuario, 
-                    //     email: emailUsuario,
-                    //     auth: 'databaseAuth'
-                    // }
-                    // req.session.user = jsonDados;
-                    res.render('menu', { usuario: usuario });
+                    let jsonDados = { 
+                        usuario: usuario, 
+                        email: emailUsuario,
+                        listaLivros: listaLivros
+                    }
+                    req.session.user = jsonDados;
+                    res.render('menu', jsonDados); 
                 }
             } 
             if (login != null || senha != null) {
                 return res.status(401).redirect('/');
-            }
+            } 
          }catch(err) {
             return err;
         }
@@ -52,7 +52,6 @@ module.exports.registrar = async (req, res) => {
                     name: nome,
                     email: login,
                     senha: hashSenha,
-                    avatar: './public/imgUsers/avatar0.png',
                 });
                 return res.status(200).render('index');
             }else {
@@ -93,13 +92,5 @@ module.exports.trocarSenha = async (req, res) => {
         }
     }catch(err) {
         return err
-    }
-};
-
-module.exports.logOut = (req, res) => {
-    try {
-        return res.status(200).render('index');
-    }catch(err) {
-        return err;
     }
 };

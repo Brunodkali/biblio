@@ -28,16 +28,13 @@ routerGoogle.post('/loginGoogle', (req, res) => {
             const nomeUser = payload["name"];
             const emailUser = payload["email"];
             const listaLivros = await dbLivros.find();
-            // let jsonDados = { 
-            //     usuario: nomeUser, 
-            //     email: emailUser,
-            //     avatarImg: imgUser,
-            //     auth: 'googleAuth', 
-            //     listaUsuarios: listaUsuarios,
-            //     listaGrupos: listaGrupos
-            // }
-            // req.session.user = jsonDados;
-            res.render('menu', { usuario: nomeUser});
+            let jsonDados = { 
+                usuario: nomeUser, 
+                email: emailUser,
+                listaLivros: listaLivros
+            }
+            req.session.user = jsonDados;
+            res.render('menu', jsonDados);
         }catch(err) {
             return err;
         }
