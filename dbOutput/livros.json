@@ -1,0 +1,81 @@
+[{
+  "_id": {
+    "$oid": "63adf72b66a0b8b49cf31263"
+  },
+  "titulo": "Ressurreição - 1872",
+  "numeroPaginas": 80,
+  "editora": "Obra Pública",
+  "autor": "Machado de Assis",
+  "capa": "../public/imgLivros/ressurreicao.jpg",
+  "conteudo": "ressurreicao.pdf"
+},{
+  "_id": {
+    "$oid": "63b5d8b7a5ccccd7c0c49188"
+  },
+  "titulo": "A Abóbada",
+  "numeroPaginas": 21,
+  "editora": "Obra Pública",
+  "autor": "Alexandre Herculano",
+  "capa": "../public/imgLivros/abobada.jpg",
+  "conteudo": "abobada.pdf"
+},{
+  "_id": {
+    "$oid": "63b5d98ca5ccccd7c0c49189"
+  },
+  "titulo": "A Alegria da Revolução",
+  "numeroPaginas": 230,
+  "editora": "Obra Pública",
+  "autor": "Ken Knab",
+  "capa": "../public/imgLivros/alegriaDaRevolucao.jpg",
+  "conteudo": "alegriaDaRevolucao.pdf"
+},{
+  "_id": {
+    "$oid": "63b5da6ea5ccccd7c0c4918a"
+  },
+  "titulo": "A Alma Encantadora das Ruas",
+  "numeroPaginas": 112,
+  "editora": "Obra Pública",
+  "autor": "João Ribeiro",
+  "capa": "../public/imgLivros/almaEncantadoraDasRuas.jpg",
+  "conteudo": "almaEncantadoraDasRuas.pdf"
+},{
+  "_id": {
+    "$oid": "63b5dc2fa5ccccd7c0c4918b"
+  },
+  "titulo": "A Cartomante",
+  "numeroPaginas": 7,
+  "editora": "Obra Pública",
+  "autor": "Machado de Assis",
+  "capa": "../public/imgLivros/aCartomante.jpg",
+  "conteudo": "aCartomante.pdf"
+},{
+  "_id": {
+    "$oid": "63b5dd8aa5ccccd7c0c4918c"
+  },
+  "titulo": "A Dama Das Camélias",
+  "numeroPaginas": 101,
+  "editora": "Obra Pública",
+  "autor": "Alexandre Dumas",
+  "capa": "../public/imgLivros/aDamaDasCamelias.jpg",
+  "conteudo": "aDamaDasCamelias.pdf"
+},{
+  "_id": {
+    "$oid": "63b5de92a5ccccd7c0c4918d"
+  },
+  "titulo": "Faróis",
+  "numeroPaginas": 84,
+  "editora": "Obra Pública",
+  "autor": "Cruz e Souza",
+  "capa": "../public/imgLivros/farois.jpg",
+  "conteudo": "farois.pdf"
+},{
+  "_id": {
+    "$oid": "63b5e530a5ccccd7c0c4918e"
+  },
+  "titulo": "Astronomia Básica I",
+  "numeroPaginas": 84,
+  "editora": "Obra Pública",
+  "autor": "Bruno Duarte",
+  "capa": "../public/imgLivros/astronomia1.jpg",
+  "conteudo": "astronomiaBasica1.pdf"
+}]

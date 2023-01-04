@@ -26,14 +26,13 @@
 
     <div class="divLivros">
       <% for(let i = 0; i < listaLivros.length; i++) {%>
-        <form action="/download" method="POST" id='<%= i %>' class="formLivros">
+        <form id='<%= i %>' class="formLivros">
             <p class="tituloLivro"><b><%= listaLivros[i].titulo %></b></p>
             <p>Autor: <%= listaLivros[i].autor %></p>
-            <p>Qtd. Pags: <%= listaLivros[i].numeroPaginas %></p>
+            <p>Qtd. Págs: <%= listaLivros[i].numeroPaginas %></p>
             <p>Editora: <%= listaLivros[i].editora %></p>
             <img src="<%= listaLivros[i].capa %>" alt="CAPA" height="140px" width="110px" style="margin: 10px;"><br>
-            <i id="livro" class="fa-solid fa-file-pdf"></i>
-            <button type="submit">Baixar</button>
+            <a href="../public/arquivosPdf/<%= listaLivros[i].conteudo %>" download><i id="livro" class="fa-solid fa-file-pdf"></i></a>
         </form>
         <% } %>
     </div>

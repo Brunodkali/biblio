@@ -18,6 +18,9 @@ const livroSchema = new mongoose.Schema({
     },
     capa: {
         type: String,
+    },
+    conteudo: {
+        type: String,
     }
 });
 
