@@ -1,7 +1,6 @@
 const dbUsuarios = require('../models/userModel.js');
 const dbLivros = require('../models/livroModel.js');
 const md5 = require('md5');
-const fs = require('fs').promises;
 
 module.exports.login = async (req, res) => {
     try{
@@ -93,5 +92,22 @@ module.exports.trocarSenha = async (req, res) => {
         }
     }catch(err) {
         return err
+    }
+};
+
+module.exports.filtro = async (req, res) => {
+    try {
+        let pesquisa = req.body.filtro;
+        let jsonDados = req.session.user;
+        console.log(pesquisa);
+        let listaLivrosFiltros = await dbLivros.find(
+            {"titulo": {'$regex': pesquisa}},
+            {"editora": {'$regex': pesquisa}},
+            {"autor": {'$regex': pesquisa}},
+        );
+        console.log(listaLivrosFiltros);   
+        return res.render('menu', { listaLivros: listaLivrosFiltros, usuario: jsonDados['usuario'], email: jsonDados['email'], qntdUsuarios: jsonDados['qntdUsuarios'] });
+    }catch(err) {
+        return err;
     }
 };

@@ -16,11 +16,14 @@
     <nav class="navbar bg-body-tertiary">
         <div class="container-fluid">
           <a class="navbar-brand"><img src="../public/img/wwAsset 6.png" alt="LOGO" height="70px" width="130px" style="margin: 10px;"></a>
-          <form class="d-flex" role="search">
-            <input class="form-control me-3" type="search" placeholder="Pesquisar livro ou categoria..." aria-label="Search">
+          <form class="d-flex" role="search" action="/filtros" method="POST">
+            <input class="form-control me-3" type="search" placeholder="Pesquisar livro ou categoria..." aria-label="Search" name="filtro">
             <button class="btn btn-outline-success" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
           </form>
-          <p class="usuario">Bem-vindo <b><%= usuario %></b> <i id="logOut" class="fa-solid fa-right-from-bracket"></i></p>
+          <div class="container-p">
+            <p class="usuario">Bem-vindo <b><%= usuario %></b> <i id="logOut" class="fa-solid fa-right-from-bracket"></i></p>
+            <p class="usuarios">Usuários registrados: <b><%= qntdUsuarios %></b></p>
+          </div>
         </div>
     </nav>
 
