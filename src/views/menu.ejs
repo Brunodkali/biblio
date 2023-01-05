@@ -15,9 +15,9 @@
 <body>
     <nav class="navbar bg-body-tertiary">
         <div class="container-fluid">
-          <a class="navbar-brand"><img src="../public/img/wwAsset 6.png" alt="LOGO" height="70px" width="130px" style="margin: 10px;"></a>
+          <a href="#" class="navbar-brand"><img src="../public/img/wwAsset 6.png" alt="LOGO" height="70px" width="130px" style="margin: 10px;"></a>
           <form class="d-flex" role="search" action="/filtros" method="POST">
-            <input class="form-control me-3" type="search" placeholder="Pesquisar livro ou categoria..." aria-label="Search" name="filtro">
+            <input class="form-control me-3" type="search" placeholder="Pesquisar livro, autor ou editora..." aria-label="Search" name="filtro">
             <button class="btn btn-outline-success" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
           </form>
           <div class="container-p">
@@ -27,6 +27,10 @@
         </div>
     </nav>
 
+    <% if(status == 201){ %>
+      <h3>Nenhuma busca encontrada com esses parâmetros!</h3>
+    <% } %>
+    
     <div class="divLivros">
       <% for(let i = 0; i < listaLivros.length; i++) {%>
         <form id='<%= i %>' class="formLivros">
@@ -39,6 +43,21 @@
         </form>
         <% } %>
     </div>
+
+    <footer class="padding-64 footer-color">
+      <div class="link-footer">
+          <p>
+              Desenvolvido por
+              <a href="https://www.linkedin.com/in/bruno-victor-oliveira-duarte/">Bruno Duarte</a>&copy;
+          </p>
+      </div>
+      <div class="icones-content-1">
+          <a href="https://github.com/Brunodkali" target="_blank"><i class="fa fa-github hover-opacity"></i></a>
+          <a href="https://www.linkedin.com/in/bruno-victor-oliveira-duarte/" target="_blank"><i class="fa fa-linkedin hover-opacity"></i></a>
+          <a href="https://duartebruno1.000webhostapp.com/" target="_blank"><i class="fa fa-google hover-opacity"></i></a>
+          <a href="javascript:void(0)" id="share"><i class="fa-solid fa-share-nodes"></i></a>
+      </div>
+  </footer>
 
     <!-- Ícones -->
     <script src="https://kit.fontawesome.com/a9ac96b7ba.js" crossorigin="anonymous"></script>

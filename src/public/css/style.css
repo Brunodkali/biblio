@@ -268,6 +268,11 @@ input[type="submit"]:hover {
     flex-direction: column;
 }
 
+.container-p a img{
+    border-radius: 5px;
+    align-items: flex-end;
+}
+
 .usuario {
     font-family: Poppins;
     font-size: 18px;
@@ -328,4 +333,59 @@ input[type="submit"]:hover {
     margin-top: -15px;
     margin-left: 325px;
     color: rgb(226, 31, 31);
+}
+
+/* Footer */
+
+.padding-64{
+    padding: 30px 64px 30px 64px;
+    margin-top: 50px;
+}
+
+.footer-color {
+    background-color: #333333;
+}
+
+.icones-content-1 {
+    text-align: center;
+    padding-top: 35px;
+    color: #fff;
+    font-size: 30px;
+    letter-spacing: 10px;
+    text-decoration: none;
+}
+
+.icones-content-1 a{
+    color: #fff;
+}
+
+.hover-opacity:hover {
+    opacity: 0.9;
+    cursor: pointer;
+}
+
+.link-footer {
+    color: #fff;
+    text-align: center;
+    font-size: 16px;
+    font-family: poppins;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.link-footer p{
+    color: #fff;
+    padding-right: 5px;
+    font-family: Poppins;
+    font-weight: 500;
+}
+
+.link-footer a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.link-footer a:hover {
+    color: rgb(126, 126, 126);
+    text-decoration: underline;
 }

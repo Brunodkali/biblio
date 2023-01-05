@@ -99,14 +99,18 @@ module.exports.filtro = async (req, res) => {
     try {
         let pesquisa = req.body.filtro;
         let jsonDados = req.session.user;
-        console.log(pesquisa);
-        let listaLivrosFiltros = await dbLivros.find(
-            {"titulo": {'$regex': pesquisa}},
-            {"editora": {'$regex': pesquisa}},
-            {"autor": {'$regex': pesquisa}},
-        );
-        console.log(listaLivrosFiltros);   
-        return res.render('menu', { listaLivros: listaLivrosFiltros, usuario: jsonDados['usuario'], email: jsonDados['email'], qntdUsuarios: jsonDados['qntdUsuarios'] });
+        let listaLivrosFiltros = await dbLivros.find({
+            $or : [
+                {"titulo": {'$regex': new RegExp(pesquisa, 'i')} },
+                {"editora": {'$regex': new RegExp(pesquisa, 'i')}},
+                {"autor": {'$regex': new RegExp(pesquisa, 'i')}}
+            ]
+        });
+        console.log(listaLivrosFiltros)
+        if (listaLivrosFiltros === []) {
+            return res.render('menu', { status: 201, usuario: jsonDados['usuario'], email: jsonDados['email'], qntdUsuarios: jsonDados['qntdUsuarios'] })
+        }
+        return res.render('menu', { status: 200, listaLivros: listaLivrosFiltros, usuario: jsonDados['usuario'], email: jsonDados['email'], qntdUsuarios: jsonDados['qntdUsuarios'] });
     }catch(err) {
         return err;
     }
