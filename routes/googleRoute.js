@@ -17,12 +17,14 @@ routerGoogle.post('/loginGoogle', async (req, res) => {
 
     googleAuthentication.then(resultado => {
         let jsonDados = {
+            status: 200,
             usuario: resultado['name'], 
             email: resultado['email'],
+            listaLivros: listaLivros,
             qntdUsuarios: qntdUsuarios
         }
         req.session.user = jsonDados;
-        return res.render('menu', { status: 200, listaLivros: listaLivros, usuario: resultado['name'], email: resultado['email'], qntdUsuarios: qntdUsuarios });
+        return res.render('menu', jsonDados);
     });
 });
 

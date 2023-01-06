@@ -92,7 +92,13 @@ label {
 input {
     outline: none;
 }
-   
+
+.fa-eye {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    cursor: pointer;
+}
 
 input:not([type="checkbox"]) {
     width: 95%;
@@ -104,8 +110,24 @@ input:not([type="checkbox"]) {
     transition: all 0.2s linear;
     font-family: Poppins;
     font-size: 16px;
+    float: left;
+    margin-bottom: 20px;
 }
-   
+
+/* formatação do elemento */
+#fa-eye {
+    float: left;
+    margin: 2px 2px 2px -30px;
+    cursor: pointer
+ }
+ 
+ /* formatação do conteúdo  */
+ #fa-eye:after {
+    font-family: FontAwesome;
+    font-size: 14px;
+    content: "\f070"
+ }
+ 
 input[type="submit"] {
     width: 100%!important;
     cursor: pointer;  
@@ -333,6 +355,17 @@ input[type="submit"]:hover {
     margin-top: -15px;
     margin-left: 325px;
     color: rgb(226, 31, 31);
+}
+
+.parametros {
+    height: 700px;
+}
+
+.parametros h3{
+    font-family: Poppins;
+    font-size: 30px;
+    text-align: center;
+    padding-top: 15%;
 }
 
 /* Footer */

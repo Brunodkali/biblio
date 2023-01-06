@@ -8,6 +8,7 @@ module.exports.login = async (req, res) => {
         let senha = req.body.senha;
         let senhaHash = md5(senha);
         let listaUsuarios = await dbUsuarios.find();
+        let qntdUsuarios = await dbUsuarios.count();
         let listaLivros = await dbLivros.find();
 
         try {
@@ -16,12 +17,14 @@ module.exports.login = async (req, res) => {
                 let emailUsuario = listaUsuarios[i].email;
                 let senhaUsuario = listaUsuarios[i].senha;
 
-                if(login == emailUsuario && senha == senhaUsuario){
+                if(login == emailUsuario && senhaHash == senhaUsuario){
                     let usuario = nomeUsuario[0].toUpperCase() + nomeUsuario.substr(1);
                     let jsonDados = { 
+                        status: 200,
                         usuario: usuario, 
                         email: emailUsuario,
-                        listaLivros: listaLivros
+                        listaLivros: listaLivros,
+                        qntdUsuarios: qntdUsuarios
                     }
                     req.session.user = jsonDados;
                     res.render('menu', jsonDados); 
@@ -38,18 +41,18 @@ module.exports.login = async (req, res) => {
     }
 };
 
-module.exports.registrar = async (req, res) => {
+module.exports.cadastro = async (req, res) => {
     try {
-        let login = req.body.login;
+        let login = req.body.email;
         let nome = req.body.nome;
         let senha = req.body.senha;
         let confSenha = req.body.confSenha;
-    
+
         try {
             if (senha == confSenha) {
                 let hashSenha = md5(senha);
-                let userAdd = await Usuarios.create({
-                    name: nome,
+                let userAdd = await dbUsuarios.create({
+                    nome: nome,
                     email: login,
                     senha: hashSenha,
                 });
@@ -81,7 +84,7 @@ module.exports.trocarSenha = async (req, res) => {
                         senha: hashSenhaNova 
                     }
                 }
-                let update = await Usuarios.updateOne(filter, senhaNova, options);
+                let update = await dbUsuarios.updateOne(filter, senhaNova, options);
     
                 return res.status(200).render('index');
             }else {
@@ -106,11 +109,22 @@ module.exports.filtro = async (req, res) => {
                 {"autor": {'$regex': new RegExp(pesquisa, 'i')}}
             ]
         });
-        console.log(listaLivrosFiltros)
-        if (listaLivrosFiltros === []) {
-            return res.render('menu', { status: 201, usuario: jsonDados['usuario'], email: jsonDados['email'], qntdUsuarios: jsonDados['qntdUsuarios'] })
+        
+        if (listaLivrosFiltros.length <= 0) {
+            return res.render('menu', { 
+                status: 201, 
+                usuario: jsonDados['usuario'], 
+                email: jsonDados['email'], 
+                qntdUsuarios: jsonDados['qntdUsuarios'] 
+            });
         }
-        return res.render('menu', { status: 200, listaLivros: listaLivrosFiltros, usuario: jsonDados['usuario'], email: jsonDados['email'], qntdUsuarios: jsonDados['qntdUsuarios'] });
+        return res.render('menu', { 
+            status: jsonDados['status'], 
+            usuario: jsonDados['usuario'], 
+            email: jsonDados['email'], 
+            listaLivros: listaLivrosFiltros, 
+            qntdUsuarios: jsonDados['qntdUsuarios'] 
+        });
     }catch(err) {
         return err;
     }

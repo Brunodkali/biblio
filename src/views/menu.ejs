@@ -28,9 +28,12 @@
     </nav>
 
     <% if(status == 201){ %>
-      <h3>Nenhuma busca encontrada com esses parâmetros!</h3>
+      <div class="parametros">
+        <h3>Nenhuma busca encontrada com esses parâmetros!</h3>
+      </div>
     <% } %>
-    
+
+    <% if(status == 200){ %>
     <div class="divLivros">
       <% for(let i = 0; i < listaLivros.length; i++) {%>
         <form id='<%= i %>' class="formLivros">
@@ -43,6 +46,7 @@
         </form>
         <% } %>
     </div>
+    <% } %>
 
     <footer class="padding-64 footer-color">
       <div class="link-footer">
@@ -54,8 +58,9 @@
       <div class="icones-content-1">
           <a href="https://github.com/Brunodkali" target="_blank"><i class="fa fa-github hover-opacity"></i></a>
           <a href="https://www.linkedin.com/in/bruno-victor-oliveira-duarte/" target="_blank"><i class="fa fa-linkedin hover-opacity"></i></a>
-          <a href="https://duartebruno1.000webhostapp.com/" target="_blank"><i class="fa fa-google hover-opacity"></i></a>
+          <a href="https://codeovershadow-port.netlify.app/" target="_blank"><i class="fa fa-google hover-opacity"></i></a>
           <a href="javascript:void(0)" id="share"><i class="fa-solid fa-share-nodes"></i></a>
+          <a href="#" id="share"><i class="fa-solid fa-hand-holding-dollar"></i></a>
       </div>
   </footer>
 
