@@ -420,3 +420,28 @@ input[type="submit"]:hover {
     color: rgb(126, 126, 126);
     text-decoration: underline;
 }
+
+/* Modal */
+
+.modal-header h5 {
+    display: flex;
+    justify-content: center!important;
+    text-align: center!important;
+}
+
+.modal-body p {
+    text-align: center;
+    font-size: 16px;
+    font-family: Poppins;
+    margin: 20px;
+}
+
+.modal-body {
+    display: flex;
+    justify-content: center!important;
+    flex-direction: column;
+}
+
+.modal-footer button {
+    align-items: center;
+}

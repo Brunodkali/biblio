@@ -13,7 +13,7 @@ routerGoogle.post('/loginGoogle', async (req, res) => {
     const client_id = process.env.GOOGLE_CLIENT_ID || '245073186631-0aq6pl4ailrqeruehjuvhkk35iuem2e6.apps.googleusercontent.com';
     var listaLivros = await dbLivros.find();
     var qntdUsuarios = await dbUsers.count();
-    var googleAuthentication = (await googleAuth(token, client_id)).selectAll();
+    var googleAuthentication = (await googleAuth(token, client_id)).getUserData();
 
     googleAuthentication.then(resultado => {
         let jsonDados = {
