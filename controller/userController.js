@@ -88,7 +88,7 @@ module.exports.trocarSenha = async (req, res) => {
     
                 return res.status(200).render('index');
             }else {
-                return res.status(401).render('trocarSenha', { status: 401 });
+                return res.status(401).render('esqueceuSenha', { status: 401 });
             }
         }catch(err) {
             return err;

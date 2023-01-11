@@ -390,6 +390,10 @@ input[type="submit"]:hover {
     color: #fff;
 }
 
+.icones-content-1 a i:hover{
+    color: rgb(155, 155, 155);
+}
+
 .hover-opacity:hover {
     opacity: 0.9;
     cursor: pointer;

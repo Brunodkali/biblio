@@ -11,48 +11,35 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/public/css/style.css"/>
     
-    <title>Nova Alexandria</title>
+    <title>Tela de Cadastro</title>
 
 </head>
 <body>
     <div class="centralizar">
         <div class="conteudo">      
             <div id="login">
-                <form action="/loginDB" method="POST"> 
-                    <h2><i class="fa-regular fa-user"></i> Conecte-se</h2> 
+                <form action="/esqueceu" method="POST"> 
+                    <h2><i class="fa-regular fa-user"></i> Cadastre-se</h2> 
                     <p> 
                         <label for="email">E-mail</label>
-                        <input id="email" name="email" required="required" type="email" placeholder="Insira seu e-mail" autocomplete="on"/>
+                        <input id="emailTroca" name="emailTroca" required="required" type="email" placeholder="Insira seu e-mail" autocomplete="on"/>
                     </p>
                     <p> 
                         <label for="senha">Senha</label>
-                        <input id="senha" name="senha" required="required" type="password" placeholder="Insira sua senha" /> 
+                        <input id="senha" name="senhaTroca" required="required" type="password" placeholder="Insira sua nova senha"/>
+                        <div id="fa-eye"></div>
                     </p>
                     <p> 
-                        <input type="submit" value="Entrar" id="entrar" name="entrar"><br>
+                        <label for="confSenha">Confirme a senha</label>
+                        <input id="confSenhaTroca" name="confSenhaTroca" required="required" type="password" placeholder="Re-digite sua senha" />
+                    </p>
+                    <p> 
+                        <input type="submit" value="Alterar" id="entrar" name="entrar"><br>
                     </p>
                 </form>
-                <p style="text-align: end;"> 
-                    <label for="manterlogado">Esqueceu sua <a href="/esqueceuSenha" id="esqueceuSenha" name="esqueceuSenha">senha?</a></label>
-                </p>
-                <p style="text-align: end; margin-bottom: 40px;"> 
-                    <label for="manterlogado"> <a href="/cadastro" id="cadastro" name="cadastro">Cadastre-se</a></label>
-                </p>
-                <div class="googleAuth"> 
-                    <div id="g_id_onload"
-                        data-client_id="245073186631-0aq6pl4ailrqeruehjuvhkk35iuem2e6.apps.googleusercontent.com"
-                        data-login_uri="http://localhost:3000/loginGoogle"
-                        data-context="use">
-                    </div>
-                    <div class="g_id_signin"
-                        data-type="standard"
-                        data-size="large"
-                        data-theme="outline"
-                        data-text="sign_in_with"
-                        data-shape="rectangular"
-                        data-logo_alignment="left">
-                    </div>
-                </div>
+                <% if(status == 401){ %>
+                    <h3 style="text-align: center;">As senhas não coincidem!</h3>
+                <% } %>
             </div>
         </div>
     </div>
@@ -78,6 +65,7 @@
         </div>
     </div>
     
+    <script src="../public/js/senha.js"></script>
     <!-- Ícones -->
     <script src="https://kit.fontawesome.com/a9ac96b7ba.js" 
     crossorigin="anonymous"></script>
