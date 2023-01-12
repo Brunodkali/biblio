@@ -73,20 +73,25 @@ module.exports.trocarSenha = async (req, res) => {
         let emailTroca = req.body.emailTroca;
         let senhaTroca = req.body.senhaTroca;
         let confSenhaTroca = req.body.confSenhaTroca;
-    
+        let nomeUser = await dbUsuarios.find({ email: emailTroca });
+
         try {
             if (senhaTroca == confSenhaTroca) {
-                let filter = { email: emailTroca };
-                let options = { upsert: false };
-                let hashSenhaNova = md5(senhaTroca);
-                let senhaNova = { 
-                   $set: {
-                        senha: hashSenhaNova 
+                if (nomeUser.length > 0) {
+                    let filter = { email: emailTroca };
+                    let options = { upsert: false };
+                    let hashSenhaNova = md5(senhaTroca);
+                    let senhaNova = { 
+                    $set: {
+                            senha: hashSenhaNova 
+                        }
                     }
+                    let update = await dbUsuarios.updateOne(filter, senhaNova, options);
+        
+                    return res.status(200).render('index');
+                }else {
+                    return res.status(401).render('esqueceuSenha', { status: 404 });  
                 }
-                let update = await dbUsuarios.updateOne(filter, senhaNova, options);
-    
-                return res.status(200).render('index');
             }else {
                 return res.status(401).render('esqueceuSenha', { status: 401 });
             }
