@@ -10,7 +10,7 @@ module.exports.loginGoogle = async (req, res) => {
     var googleAuthentication = (await googleAuth(token, client_id)).getUserData();
 
     googleAuthentication.then(resultado => {
-        let jsonDados = {
+        let jsonDados = { 
             status: 200,
             usuario: resultado['name'], 
             email: resultado['email'],
