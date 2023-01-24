@@ -51,12 +51,18 @@ module.exports.cadastro = async (req, res) => {
         try {
             if (senha == confSenha) {
                 let hashSenha = md5(senha);
-                let userAdd = await dbUsuarios.create({
+
+                await dbUsuarios.create({
                     nome: nome,
                     email: login,
                     senha: hashSenha,
+                })
+                .then(() => {
+                    return res.status(200).render('index');
+                })
+                .catch((err) => {
+                    return res.status(500).send('Ocorreu um erro ao cadastrar o usuário');
                 });
-                return res.status(200).render('index');
             }else {
                 return res.status(401).render('cadastro', { status: 401 });
             }

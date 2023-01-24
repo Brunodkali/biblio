@@ -7,9 +7,9 @@ module.exports.loginGoogle = async (req, res) => {
     const client_id = process.env.GOOGLE_CLIENT_ID || '245073186631-0aq6pl4ailrqeruehjuvhkk35iuem2e6.apps.googleusercontent.com';
     var listaLivros = await dbLivros.find();
     var qntdUsuarios = await dbUsers.count();
-    var googleAuthentication = (await googleAuth(token, client_id)).getUserData();
 
-    googleAuthentication.then(resultado => {
+    (await googleAuth(token, client_id)).getUserData()
+    .then(resultado => { 
         let jsonDados = { 
             status: 200,
             usuario: resultado['name'], 
@@ -18,6 +18,9 @@ module.exports.loginGoogle = async (req, res) => {
             qntdUsuarios: qntdUsuarios
         }
         req.session.user = jsonDados;
-        return res.render('menu', jsonDados);
+        return res.status(200).render('menu', jsonDados);
+    })
+    .catch((err) => {
+        return res.status(500).send('Erro ao logar com conta Google');
     });
 };
